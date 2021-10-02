@@ -2,7 +2,7 @@
 
 Description: web application to show when the next satellite will be passing over your location
 
-Satellite Passes API:  https://satellites.fly.dev/
+Satellite Passes API:  https://satellites.fly.dev/passes/25544?lat=55.7796&lon=78.6382&limit=1
 
 [
 {
@@ -64,25 +64,31 @@ Loction IQ API:  https://us1.locationiq.com/v1/search.php?key=[ACCESS KEY]&q=Ral
 ]
 
 
+wireframe: https://www.figma.com/file/p3eGa9XHy7aQYkgO99o4w0/Untitled?node-id=0%3A1
+
+
 MVP List:
-search bar that will let people search their location useing a geocache API
 
-fetch that will use long & lat from geocahe API to pull info from satellite API
+//search bar that will let people search their location useing a geocache API
 
-display that will show the angle the satellite will be in the sky and which compass direction
+//fetch that will use long & lat from geocahe API to pull info from satellite API
 
-info box that will give all the information aout the satelite to the user
+//display that will show the angle the satellite will be in the sky and which compass direction
 
-organize the page and the info box with flexbox
+//info box that will give all the information aout the satelite to the user
+
+//organize the page and the info box with flexbox
   
   
+
+
 Post MVP List:
 
-use animation for the satellite display
+//use animation for the satellite display
 
-create suggestion dropdown for the search box
+//create suggestion dropdown for the search box
 
-background of display will change based on time of day the satellite will be passing over
+//background of display will change based on time of day the satellite will be passing over
 
-make the opacity of the satellite change based on whether it will be visible or not
+//make the opacity of the satellite change based on whether it will be visible or not
   
