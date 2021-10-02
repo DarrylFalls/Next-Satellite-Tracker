@@ -65,7 +65,6 @@ Loction IQ API:  https://us1.locationiq.com/v1/search.php?key=[ACCESS KEY]&q=Ral
 
 
 MVP List:
-
 search bar that will let people search their location useing a geocache API
 
 fetch that will use long & lat from geocahe API to pull info from satellite API
