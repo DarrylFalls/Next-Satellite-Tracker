@@ -65,16 +65,25 @@ Loction IQ API:  https://us1.locationiq.com/v1/search.php?key=[ACCESS KEY]&q=Ral
 
 
 MVP List:
+
 search bar that will let people search their location useing a geocache API
+
 fetch that will use long & lat from geocahe API to pull info from satellite API
+
 display that will show the angle the satellite will be in the sky and which compass direction
+
 info box that will give all the information aout the satelite to the user
+
 organize the page and the info box with flexbox
   
   
 Post MVP List:
+
 use animation for the satellite display
+
 create suggestion dropdown for the search box
+
 background of display will change based on time of day the satellite will be passing over
+
 make the opacity of the satellite change based on whether it will be visible or not
   
