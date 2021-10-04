@@ -5,7 +5,7 @@ header {
 }
 
 body {
-  background: rgb(149, 11, 149)
+  background: rgb(112, 13, 112)
 }
 
 #main-display {
@@ -47,7 +47,7 @@ body {
   margin-left: 0;
   height: 500px;
   width: 10%;
-  background: linear-gradient(to right, rgba(149,11,149,1), rgba(20,20,20,0));
+  background: linear-gradient(to right, rgba(112,13,112,1), rgba(20,20,20,0));
   /* display: inline-block; */
 }
 
@@ -56,7 +56,7 @@ body {
   position: relative;
   height: 500px;
   width: 10%;
-  background: linear-gradient(to left, rgba(149,11,149,1), rgba(20,20,20,0));
+  background: linear-gradient(to left, rgba(112,13,112,1), rgba(20,20,20,0));
   /* display: inline-block; */
   /* align-self: flex-end; */
 }
@@ -64,17 +64,17 @@ body {
 #top {
   height: 50px;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(149,11,149,1), rgba(20,20,20,0));
+  background: linear-gradient(to bottom, rgba(112,13,112,1), rgba(20,20,20,0));
 }
 #top-left {
   height: 50px;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(149,11,149,1), rgba(20,20,20,0));
+  background: linear-gradient(to bottom, rgba(112,13,112,1), rgba(20,20,20,0));
 }
 #top-right {
   height: 50px;
   width: 100%;
-  background: linear-gradient(to bottom, rgba(149,11,149,1), rgba(20,20,20,0));
+  background: linear-gradient(to bottom, rgba(112,13,112,1), rgba(20,20,20,0));
 }
 
 form {
@@ -83,7 +83,7 @@ form {
 }
 
 #action-area {
-  background: rgb(70, 104, 160);
+  background: rgb(79, 81, 83);
   /* background: url(images/night-sky.jpg); */
   background-size: cover;
   height: 500px;

@@ -43,26 +43,38 @@ const addSatellites = (data) => {
   differentSatellites(data)
 }
 
-const getTime = (data) => {
+const getTime12 = (data) => {
   const dt = data.utc_datetime
   const minute = `${dt[14]}${dt[15]}`
   const second = `${dt[17]}${dt[18]}`
   let pre = null
   let hourNum = null
-  const getHour = (dt) => {
-    let h = dt[11] + dt[12]
-    let hInt = parseInt(h)
-    if (hInt > 12) {
-      hourNum = hInt - 12
+  let h = dt[11] + dt[12]
+  // let hInt = parseInt(h)
+  if (h > 12) {
+    if (h < 22) {
+      hourNum = `0${h - 12}`
       pre = 'PM'
     } else {
-      hourNum = hInt
-      pre = 'AM'
+      hourNum = h - 12
+      pre = 'PM'
     }
-    return `${pre} ${hourNum}`
+  } else {
+    hourNum = h
+    pre = 'AM'
   }
-  const hour = getHour(dt)
+  
 
+  let time = `${hourNum}:${minute}:${second} ${pre}`
+
+  return time
+}
+
+const getTime24 = (data) => {
+  const dt = data.utc_datetime
+  const minute = `${dt[14]}${dt[15]}`
+  const second = `${dt[17]}${dt[18]}`
+  let hour = dt[11] + dt[12]
   let time = `${hour}:${minute}:${second}`
 
   return time
@@ -81,17 +93,19 @@ const differentSatellites = (data) => {
   const riseAlt = data.rise.alt
   const culmAlt = data.culmination.alt
   const setAlt = data.set.alt
-  const risePerc = (riseAlt / 90) * 100
-  const culmPerc = (culmAlt / 90) * 100
-  const setPerc = (setAlt / 90) * 100
-  const satList = [
+  const risePerc = (Math.floor((riseAlt / 90) * 10000) / 100)
+  const culmPerc = (Math.floor((culmAlt / 90) * 10000) / 100)
+  const setPerc = (Math.floor((setAlt / 90) * 10000) / 100)
+  const satArr = [
     {
       position: 'Rise',
       alt: `${riseAlt}`,
       altPerc: risePerc,
       az: data.rise.az,
       direction: data.rise.az_octant,
-      time: getTime(data.rise),
+      time: getTime12(data.rise),
+      time24: getTime24(data.rise),
+      visible: data.rise.is_sunlit,
     },
     {
       position: 'Culmination',
@@ -99,7 +113,9 @@ const differentSatellites = (data) => {
       altPerc: culmPerc,
       az: data.culmination.az,
       direction: data.culmination.az_octant,
-      time: getTime(data.culmination),
+      time: getTime12(data.culmination),
+      time24: getTime24(data.culmination),
+      visible: data.culmination.is_sunlit,
     },
     {
       position: 'Set',
@@ -107,10 +123,16 @@ const differentSatellites = (data) => {
       altPerc: setPerc,
       az: data.set.az,
       direction: data.set.az_octant,
-      time: getTime(data.set),
+      time: getTime12(data.set),
+      time24: getTime24(data.set),
+      visible: data.set.is_sunlit,
     }
   ]
-  console.log(satList)
+  console.log(satArr)
+  console.log(satArr[1].time)
+  let timeOfDay = satArr[1].time24[0]+satArr[1].time24[1]
+  console.log(timeOfDay)
+  setBackground(timeOfDay)
   const risingSat = document.createElement('div')
   const culmSat = document.createElement('div')
   const settingSat = document.createElement('div')
@@ -121,3 +143,13 @@ const buildSatellites = (arr) => {
     
   });
 }
+
+const setBackground = (time) => {
+  const background = document.querySelector('#action-area')
+  if (time >= 20 || time <= 5) {
+    background.style.background = `url(images/night-sky.jpg)`
+  } else if (time < 20 && time > 5) {
+    background.style.background = 'rgb(70, 104, 160)'
+  }
+}
+
