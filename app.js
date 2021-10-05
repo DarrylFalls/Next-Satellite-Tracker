@@ -157,6 +157,39 @@ const buildInfoBox = (arr) => {
   oldContainer.innerHTML = ''
   let div = document.querySelector('#info-div')
 
+  const satelliteKey = document.createElement('div')
+  div.appendChild(satelliteKey)
+
+  const visibleSat = document.createElement('img')
+  const notVisibleSat = document.createElement('img')
+  const visSatDesc = document.createElement('h3')
+  const notVisSatDesc = document.createElement('h3')
+
+  satelliteKey.appendChild(visibleSat)
+  satelliteKey.appendChild(visSatDesc)
+  satelliteKey.appendChild(notVisibleSat)
+  satelliteKey.appendChild(notVisSatDesc)
+  //width 50px height 40px
+  visibleSat.src = 'images/satellite.png'
+  notVisibleSat.src = 'images/satellite.png'
+  visibleSat.style.height = '40px'
+  visibleSat.style.width = '60px'
+  notVisibleSat.style.height = '40px'
+  notVisibleSat.style.width = '60px'
+  notVisibleSat.style.opacity = '0.5'
+
+  visSatDesc.innerText = '= Visible'
+  visSatDesc.style.display = 'inline'
+
+  notVisSatDesc.innerText = '= Not Visible'
+  notVisSatDesc.style.display = 'inline'
+  
+
+  satelliteKey.style.display = 'flex'
+  // satelliteKey.style.flexDirection = 'row'
+  satelliteKey.style.justifyContent = 'center'
+
+
   for (i = 0; i < arr.length; i++){
     const container = document.createElement('div')
     container.className = 'container'
@@ -179,7 +212,7 @@ const buildInfoBox = (arr) => {
     
 
     container.style.background = 'rgba(3, 2, 44, 0.7)'
-    container.style.color = 'white'
+    div.style.color = 'white'
     container.style.display = 'flex'
     container.style.justifyContent = 'space-evenly'
     container.style.alignItems = 'center'
@@ -216,6 +249,8 @@ const buildInfoBox = (arr) => {
 }
 
 
+
+
 const buildCompass = (arr) => {
   const compass = document.createElement('img')
   document.querySelector('#compass-div').appendChild(compass)
@@ -224,7 +259,14 @@ const buildCompass = (arr) => {
   compass.style.width = '100px'
   compass.style.position = 'center'
   compass.className = 'compass'
-  compass.style.transform = `rotate(${360 - (arr[1].az)}deg)`
+  compass.animate([{ transform: `rotate(${360 - (arr[1].az)}deg)` }], {
+    duration: 1500,
+    iterations: 1
+  })
+  setTimeout(() => {
+    compass.style.transform = `rotate(${360 - (arr[1].az)}deg)`
+  }, 1499)
+  // compass.style.transform = `rotate(${360 - (arr[1].az)}deg)`
   console.log(arr[1].az)
 }
 
@@ -266,31 +308,31 @@ const buildSatellites = (arr) => {
 
     if (window.innerWidth > 600) {
       const smallInfoBox = document.createElement('div')
-    container.appendChild(smallInfoBox)
-    smallInfoBox.style.background = 'rgba(200, 200, 200, 0.7)'
-    smallInfoBox.style.width = '200%'
-    smallInfoBox.style.textAlign = 'center'
+      container.appendChild(smallInfoBox)
+      smallInfoBox.style.background = 'rgba(200, 200, 200, 0.7)'
+      smallInfoBox.style.width = '200%'
+      smallInfoBox.style.textAlign = 'center'
 
-    const place = document.createElement('p')
-    smallInfoBox.appendChild(place)
-    place.innerText = `${sat.position}`
-    place.style.color = 'white'
-    place.style.marginBottom = '0'
-    place.style.marginTop = '0'
+      const place = document.createElement('p')
+      smallInfoBox.appendChild(place)
+      place.innerText = `${sat.position}`
+      place.style.color = 'white'
+      place.style.marginBottom = '0'
+      place.style.marginTop = '0'
 
-    const time = document.createElement('p')
-    smallInfoBox.appendChild(time)
-    time.innerText = `${sat.time}`
-    time.style.color = 'white'
-    time.style.marginTop = '0'
-    time.style.marginBottom = '0'
+      const time = document.createElement('p')
+      smallInfoBox.appendChild(time)
+      time.innerText = `${sat.time}`
+      time.style.color = 'white'
+      time.style.marginTop = '0'
+      time.style.marginBottom = '0'
 
-    const altitude = document.createElement('p')
-    smallInfoBox.appendChild(altitude)
-    altitude.innerText = `${sat.alt}°`
-    altitude.style.color = 'white'
-    altitude.style.marginTop = '0'
-    altitude.style.marginBottom = '0'
+      const altitude = document.createElement('p')
+      smallInfoBox.appendChild(altitude)
+      altitude.innerText = `${sat.alt}°`
+      altitude.style.color = 'white'
+      altitude.style.marginTop = '0'
+      altitude.style.marginBottom = '0'
     } else {
       const smallInfoBox = document.createElement('div')
       container.appendChild(smallInfoBox)
@@ -404,4 +446,8 @@ const setSkyline = (data) => {
 const clearSearch = () => {
   let old = document.querySelector('#location')
   old.value = ''
+}
+
+const moveSatellite = (data) => {
+
 }
