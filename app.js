@@ -40,8 +40,9 @@ const satFetch = (data) => {
 
 const addSatellites = (data) => {
   removeOld()
-  console.log(getDate(data.culmination))
   differentSatellites(data)
+  getDate(data.culmination)
+  clearSearch()
 }
 
 const getTime12 = (data) => {
@@ -81,11 +82,25 @@ const getTime24 = (data) => {
 }
 
 const getDate = (data) => {
+  let oldDate = document.querySelector('.date')
+  if (oldDate !== null) {
+    oldDate.remove()
+  }
   const dt = data.utc_datetime
   const year = `${dt[0]}${dt[1]}${dt[2]}${dt[3]}`
   const month = `${dt[5]}${dt[6]}`
   const day = `${dt[8]}${dt[9]}`
-  return `${month}/${day}/${year}`
+  const date = `${month}/${day}/${year}`
+  const addDate = document.createElement('h2')
+  document.querySelector('#skyline').style.textAlign = 'center'
+  addDate.style.color = 'white'
+  addDate.innerText = `${date}`
+  document.body.querySelector('#skyline').append(addDate)
+  addDate.className = 'date'
+  document.querySelector('#skyline').style.display = 'flex'
+  document.querySelector('#skyline').style.alignItems = 'flex-end'
+  document.querySelector('#skyline').style.justifyContent = 'center'
+  addDate.style.marginBottom = '0'
 }
 
 const differentSatellites = (data) => {
@@ -105,7 +120,7 @@ const differentSatellites = (data) => {
       direction: data.rise.az_octant,
       time: getTime12(data.rise),
       time24: getTime24(data.rise),
-      visible: data.rise.is_sunlit,
+      visible: data.rise.visible,
     },
     {
       position: 'Culmination',
@@ -115,7 +130,7 @@ const differentSatellites = (data) => {
       direction: data.culmination.az_octant,
       time: getTime12(data.culmination),
       time24: getTime24(data.culmination),
-      visible: data.culmination.is_sunlit,
+      visible: data.culmination.visible,
     },
     {
       position: 'Set',
@@ -125,14 +140,83 @@ const differentSatellites = (data) => {
       direction: data.set.az_octant,
       time: getTime12(data.set),
       time24: getTime24(data.set),
-      visible: data.set.is_sunlit,
+      visible: data.set.visible,
     }
   ]
   console.log(satArr)
   let timeOfDay = satArr[1].time24[0]+satArr[1].time24[1]
   setBackground(timeOfDay)
   buildSatellites(satArr)
-  
+  buildCompass(satArr)
+  buildInfoBox(satArr)
+
+}
+
+const buildInfoBox = (arr) => {
+  const oldContainer = document.querySelector('#info-div')
+  oldContainer.innerHTML = ''
+  let div = document.querySelector('#info-div')
+
+  for (i = 0; i < arr.length; i++){
+    const container = document.createElement('div')
+    container.className = 'container'
+    const newDiv = document.createElement('div')
+    newDiv.setAttribute('id', `${arr[i].position}`)
+    const label = document.createElement('h2')
+    label.for = `${arr[i].position}`
+    // label.innerText = `${arr[i].position}`
+    if (window.innerWidth > 600) {
+      label.innerText = `${arr[i].position}`
+    } else if (arr[i].position == 'Culmination') {
+      label.innerText = 'Apex'
+    } else {
+      label.innerText = `${arr[i].position}`
+    }
+    div.appendChild(container)
+    container.appendChild(label)
+    container.appendChild(newDiv)
+    label.style.fontSize = '150%'
+    
+
+    container.style.background = 'rgba(3, 2, 44, 0.7)'
+    container.style.color = 'white'
+    container.style.display = 'flex'
+    container.style.justifyContent = 'space-evenly'
+    container.style.alignItems = 'center'
+    container.style.marginBottom = '2%'
+    container.style.marginLeft = '15%'
+    container.style.marginRight = '15%'
+    container.style.borderRadius = '15px'
+    
+
+    const time = document.createElement('p')
+    const alt = document.createElement('p')
+    const az = document.createElement('p')
+    const direction = document.createElement('p')
+    const visible = document.createElement('p')
+
+    newDiv.appendChild(time)
+    newDiv.appendChild(alt)
+    newDiv.appendChild(az)
+    newDiv.appendChild(direction)
+    newDiv.appendChild(visible)
+
+    if (window.innerWidth > 600) {
+      time.innerText = `Time (12h): ${arr[i].time}`
+    } else {
+      time.innerText = `Time (24h): ${arr[i].time24}`
+    }
+    alt.innerText = `Altitude: ${arr[i].alt}°`
+    az.innerText = `Azimuth: ${arr[i].az}°`
+    direction.innerText = `Compass Direction: ${arr[i].direction}`
+    visible.innerText = `Satellite is Visible: ${arr[i].visible}`
+  }
+
+
+}
+
+
+const buildCompass = (arr) => {
   const compass = document.createElement('img')
   document.querySelector('#compass-div').appendChild(compass)
   compass.src = 'images/compass.png'
@@ -140,9 +224,8 @@ const differentSatellites = (data) => {
   compass.style.width = '100px'
   compass.style.position = 'center'
   compass.className = 'compass'
-  compass.style.transform = `rotate(${360 - (satArr[1].az)}deg)`
-  console.log(satArr[1].az)
-
+  compass.style.transform = `rotate(${360 - (arr[1].az)}deg)`
+  console.log(arr[1].az)
 }
 
 const buildSatellites = (arr) => {
@@ -165,9 +248,6 @@ const buildSatellites = (arr) => {
     container.id = `${sat.position}`
     container.style.height = '50px'
     container.style.width = '50px'
-    // container.style.background = `url(images/satellite.png)`
-    // container.style.backgroundSize = 'contain'
-    // container.style.backgroundRepeat = 'no-repeat'
     container.style.marginBottom = `${450 * sat.altPerc}px`
     container.style.display = 'flex'
     container.style.flexDirection = 'column'
@@ -183,8 +263,6 @@ const buildSatellites = (arr) => {
     }
 
     
-
-    // smallInfoBox.style.transform = 'rotate(90deg)'
 
     if (window.innerWidth > 600) {
       const smallInfoBox = document.createElement('div')
@@ -209,7 +287,7 @@ const buildSatellites = (arr) => {
 
     const altitude = document.createElement('p')
     smallInfoBox.appendChild(altitude)
-    altitude.innerText = `${sat.alt} degrees`
+    altitude.innerText = `${sat.alt}°`
     altitude.style.color = 'white'
     altitude.style.marginTop = '0'
     altitude.style.marginBottom = '0'
@@ -232,18 +310,18 @@ const buildSatellites = (arr) => {
       place.style.marginTop = '0'
 
       const time = document.createElement('p')
-    smallInfoBox.appendChild(time)
-    time.innerText = `${sat.time24[0]}${sat.time24[1]}${sat.time24[2]}${sat.time24[3]}${sat.time24[4]}`
-    time.style.color = 'white'
-    time.style.marginTop = '0'
-    time.style.marginBottom = '0'
+      smallInfoBox.appendChild(time)
+      time.innerText = `${sat.time24[0]}${sat.time24[1]}${sat.time24[2]}${sat.time24[3]}${sat.time24[4]}`
+      time.style.color = 'white'
+      time.style.marginTop = '0'
+      time.style.marginBottom = '0'
 
       const altitude = document.createElement('p')
-    smallInfoBox.appendChild(altitude)
-    altitude.innerText = `${sat.alt}°`
-    altitude.style.color = 'white'
-    altitude.style.marginTop = '0'
-    altitude.style.marginBottom = '0'
+      smallInfoBox.appendChild(altitude)
+      altitude.innerText = `${sat.alt}°`
+      altitude.style.color = 'white'
+      altitude.style.marginTop = '0'
+      altitude.style.marginBottom = '0'
     }
   });
 }
@@ -309,7 +387,21 @@ const setSkyline = (data) => {
     skyline.style.backgroundRepeat = 'repeat-x'
     skyline.style.zIndex = '8'
 
+    
   } else {
     skyline.style.background = ''
+    skyline.style.width = '100%'
+    skyline.style.height = '20%'
+    skyline.style.position = 'absolute'
+    skyline.style.bottom = '0'
+    skyline.style.left = '0'
+    skyline.style.backgroundSize = 'contain'
+    skyline.style.backgroundRepeat = 'repeat-x'
+    skyline.style.zIndex = '8'
   }
+}
+
+const clearSearch = () => {
+  let old = document.querySelector('#location')
+  old.value = ''
 }

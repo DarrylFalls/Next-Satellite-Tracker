@@ -1,11 +1,15 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+
 header {
   color: white;
   text-align: center;
+  font-family: 'Comfortaa', cursive;
 }
 
 body {
-  background: rgb(112, 13, 112)
+  background: rgb(112, 13, 112);
+  font-family: 'Comfortaa', cursive;
 }
 
 #main-display {
@@ -84,7 +88,7 @@ form {
 }
 
 #action-area {
-  background: rgb(52, 53, 54);
+  /* background: rgb(52, 53, 54); */
   /* background: linear-gradient(to top, rgb(177, 58, 2), rgb(46, 2, 97)); */
   /* background: linear-gradient(to top, rgb(197, 139, 62), rgb(45, 47, 160)); */
   /* background: url(images/night-sky.jpg); */
@@ -95,6 +99,12 @@ form {
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
+}
+
+#intro {
+  color: white;
+  text-align: center;
+  padding-top: 50px;
 }
 
 
