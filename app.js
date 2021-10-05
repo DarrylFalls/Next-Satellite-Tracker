@@ -11,6 +11,7 @@ searchButton.addEventListener('click', () => {
     .then((resJSON) => {
       console.log(resJSON[0])
       satFetch(resJSON[0])
+      setSkyline(resJSON[0])
     })
     .catch((error) => {
       console.log(`ERROR: ${error}`)
@@ -287,5 +288,25 @@ const removeOld = () => {
   const compass = document.querySelector('.compass')
   if (compass !== null) {
     compass.remove()
+  }
+}
+
+const setSkyline = (data) => {
+  const skyline = document.querySelector('#skyline')
+  const importance = data.importance
+  console.log(importance)
+  if (importance > 0.8) {
+    skyline.style.background = `url(images/city.png)`
+    skyline.style.width = '100%'
+    skyline.style.height = '20%'
+    skyline.style.position = 'absolute'
+    skyline.style.bottom = '0'
+    skyline.style.left = '0'
+    skyline.style.backgroundSize = 'contain'
+    skyline.style.backgroundRepeat = 'repeat-x'
+    skyline.style.zIndex = '8'
+
+  } else {
+    skyline.style.background = ''
   }
 }
