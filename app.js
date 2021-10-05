@@ -178,6 +178,9 @@ const buildSatellites = (arr) => {
     img.src = 'images/satellite.png'
     img.style.width = '100%'
     img.style.height = '80%'
+    if (sat.visible == false) {
+      img.style.opacity = '0.3'
+    }
 
     
 
