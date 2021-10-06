@@ -61,6 +61,7 @@ const searchSuggestion = (data) => {
   }
   for (let i = 0; i < data.length; i++) {
     console.log(data[i].display_name)
+
   }
 }
 
@@ -499,66 +500,6 @@ const moveRight = (arr) => {
   let z = window.innerWidth-65
   
   setInterval(() => {
-    // if (x == (z)) {
-    //   x = 0
-    //   y = 0
-    // } else if (x >= (z * (7 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionOneInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x >= (z * (6 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionTwoInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x >= (z * (5 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionThreeInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x >= (z * (4 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionFourInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x >= (z * (3 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y+=(positionFourInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x >= (z * (2 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y+=(positionThreeInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x >= (z * (1 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y+=(positionTwoInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else {
-    //   if (x % 10 == 0) {
-    //     y+=(positionOneInterval(arr))
-    //   }
-    //   x++
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // }
     if (x == (z)) {
       x = 0
       y = 0
@@ -594,6 +535,104 @@ const moveRight = (arr) => {
   }, timer())
 }
 
+const fourToRight = (arr, sat, x, y, z) => {
+  if (x == (z)) {
+    x = 0
+    y = 0
+  } else if (x >= (z * (3 / 4))) {
+    if (x % 10 == 0) {
+      y -= (interval1(arr))
+    }
+    x++
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  } else if (x >= (z * (2 / 4))) {
+    if (x % 10 == 0) {
+      y-= (interval2(arr))
+    }
+    x++
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  } else if (x >= (z * (1 / 4))) {
+    if (x % 10 == 0) {
+      y+= (interval2(arr))
+    }
+    x++
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  } else {
+    if (x % 10 == 0) {
+      y += (interval1(arr))
+    }
+    x++
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  }
+}
+
+const eightToRight = (arr, sat, x, y, z) => {
+    if (x == (z)) {
+      x = 0
+      y = 0
+    } else if (x >= (z * (7 / 8))) {
+      if (x % 10 == 0) {
+        y-=(positionOneInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (6 / 8))) {
+      if (x % 10 == 0) {
+        y-=(positionTwoInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (5 / 8))) {
+      if (x % 10 == 0) {
+        y-=(positionThreeInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (4 / 8))) {
+      if (x % 10 == 0) {
+        y-=(positionFourInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (3 / 8))) {
+      if (x % 10 == 0) {
+        y+=(positionFourInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (2 / 8))) {
+      if (x % 10 == 0) {
+        y+=(positionThreeInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (1 / 8))) {
+      if (x % 10 == 0) {
+        y+=(positionTwoInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else {
+      if (x % 10 == 0) {
+        y+=(positionOneInterval(arr))
+      }
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    }
+}
+
 const moveLeft = (arr) => {
   const old = document.querySelector('.moving-sat')
   if (old !== null) {
@@ -612,66 +651,6 @@ const moveLeft = (arr) => {
   let y = 0
   
   setInterval(() => {
-    // if (x == 0) {
-    //   x = z
-    //   y = 0
-    // } else if (x <= (z * (1/8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionOneInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x <= (z * (2 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionTwoInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x <= (z * (3 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionThreeInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // }else if (x <= (z * (4/8))) {
-    //   if (x % 10 == 0) {
-    //     y-=(positionFourInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x <= (z * (5 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y+=(positionFourInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x <= (z * (6 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y+=(positionThreeInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else if (x <= (z * (7 / 8))) {
-    //   if (x % 10 == 0) {
-    //     y+=(positionTwoInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // } else {
-    //   if (x % 10 == 0) {
-    //     y+=(positionOneInterval(arr))
-    //   }
-    //   x--
-    //   sat.style.marginBottom = y + "px";
-    //   sat.style.marginLeft = x + "px";
-    // }
     if (x == 0) {
       x = z
       y = 0
@@ -708,6 +687,104 @@ const moveLeft = (arr) => {
   
 }
 
+const fourToLeft = (arr, sat, x, y, z) => {
+  if (x == 0) {
+    x = z
+    y = 0
+  } else if (x <= (z * (1 / 4))) {
+    if (x % 10 == 0) {
+      y -= (interval1(arr))
+    }
+    x--
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  } else if (x <= (z * (2 / 4))) {
+    if (x % 10 == 0) {
+      y-= (interval2(arr))
+    }
+    x--
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  } else if (x <= (z * (3 / 4))) {
+    if (x % 10 == 0) {
+      y+= (interval2(arr))
+    }
+    x--
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  } else {
+    if (x % 10 == 0) {
+      y += (interval1(arr))
+    }
+    x--
+    sat.style.marginBottom = y + "px";
+    sat.style.marginLeft = x + "px";
+  }
+}
+
+const eitghtToLeft = (arr, sat, x, y, z) => {
+  if (x == 0) {
+      x = z
+      y = 0
+    } else if (x <= (z * (1/8))) {
+      if (x % 10 == 0) {
+        y-=(positionOneInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (2 / 8))) {
+      if (x % 10 == 0) {
+        y-=(positionTwoInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (3 / 8))) {
+      if (x % 10 == 0) {
+        y-=(positionThreeInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    }else if (x <= (z * (4/8))) {
+      if (x % 10 == 0) {
+        y-=(positionFourInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (5 / 8))) {
+      if (x % 10 == 0) {
+        y+=(positionFourInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (6 / 8))) {
+      if (x % 10 == 0) {
+        y+=(positionThreeInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (7 / 8))) {
+      if (x % 10 == 0) {
+        y+=(positionTwoInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else {
+      if (x % 10 == 0) {
+        y+=(positionOneInterval(arr))
+      }
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    }
+}
+
 const timer = () => {
   if (window.innerWidth > 600) {
     return 4
@@ -715,35 +792,6 @@ const timer = () => {
     return 8
   }
 }
-
-// const positionOneInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-//   const c1 = (y+(3*L))
-//   const b1 = (3 / 4) * x
-//   const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
-//   const interval = Math.round((a1/((1/4)*x))*10)
-//   return interval
-// }
-
-// const positionTwoInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-//   const c1 = y + (2 * L)
-//   const b1 = ((1 / 2) * x)
-//   const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
-//   const c2 = (y+(3*L))
-//   const b2 = (3 / 4) * x
-//   const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
-//   const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
-//   return interval
-// }
 
 const interval1 = (arr) => {
   const windowWidth = window.innerWidth - 65
@@ -770,64 +818,94 @@ const interval2 = (arr) => {
   const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
   const interval = Math.round((a1/((1/2)*x))*5)
   return interval
-
 }
 
-// const positionThreeInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-//   const c1 = y + L
-//   const b1 = (1 / 4) * x
-//   const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
-//   const c2 = y + (2 * L)
-//   const b2 = ((1 / 2) * x)
-//   const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
-//   const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
-//   return interval
-// }
+const positionOneInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+  const c1 = (y+(3*L))
+  const b1 = (3 / 4) * x
+  const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
+  const interval = Math.round((a1/((1/4)*x))*10)
+  return interval
+}
 
-// const positionFourInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-//   const a1 = y
-//   const c2 = y + L
-//   const b2 = (1 / 4) * x
-//   const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
-//   const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
-//   return interval
-// }
+const positionTwoInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+  const c1 = y + (2 * L)
+  const b1 = ((1 / 2) * x)
+  const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
+  const c2 = (y+(3*L))
+  const b2 = (3 / 4) * x
+  const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
+  const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
+  return interval
+}
 
-// const positionFiveInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-// }
 
-// const positionSixInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-// }
 
-// const positionSevenInterval = (arr) => {
-//   const windowWidth = window.innerWidth - 65
-//   const windowHeight = 450
-//   const x = windowWidth/2
-//   const y = 450 * (arr[1].altPerc)
-//   const L = (x - y) / 4
-//   const c1 = (y+(3*L))
-//   const b1 = (3 / 4) * x
-//   const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
-//   const interval = Math.floor(a1/((1/4)*x))
-//   return interval
-// }
+const positionThreeInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+  const c1 = y + L
+  const b1 = (1 / 4) * x
+  const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
+  const c2 = y + (2 * L)
+  const b2 = ((1 / 2) * x)
+  const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
+  const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
+  return interval
+}
+
+const positionFourInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+  const a1 = y
+  const c2 = y + L
+  const b2 = (1 / 4) * x
+  const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
+  const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
+  return interval
+}
+
+const positionFiveInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+}
+
+const positionSixInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+}
+
+const positionSevenInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+  const x = windowWidth/2
+  const y = 450 * (arr[1].altPerc)
+  const L = (x - y) / 4
+  const c1 = (y+(3*L))
+  const b1 = (3 / 4) * x
+  const a1 = Math.sqrt((c1 * c1) - (b1 * b1))
+  const interval = Math.floor(a1/((1/4)*x))
+  return interval
+}
