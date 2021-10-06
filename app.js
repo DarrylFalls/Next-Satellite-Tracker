@@ -1,5 +1,20 @@
 
 
+const searchBar = document.querySelector('#location')
+searchBar.addEventListener('keyup', () => {
+  const input = searchBar.value
+  const locationKey = 'pk.9ef5062ddda432e353491dd453e38da9'
+  const locationAPI = `https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${input}&format=json`
+  fetch(`${locationAPI}`)
+    .then((res) => { return res.json() })
+    .then((resJSON) => {
+      searchSuggestion(resJSON)
+    })
+    .catch((error) => {
+      console.log(`ERROR: ${error}`)
+    })
+})
+
 
 const searchButton = document.querySelector('button')
 searchButton.addEventListener('click', () => {
@@ -37,6 +52,17 @@ const satFetch = (data) => {
     // })
 }
 
+const searchSuggestion = (data) => {
+  const old = document.querySelectorAll('.search')
+  if (old !== null) {
+    for (let i = 0; i < old.length; i++) {
+      old[i].remove()
+    }
+  }
+  for (let i = 0; i < data.length; i++) {
+    console.log(data[i].display_name)
+  }
+}
 
 const addSatellites = (data) => {
   removeOld()
