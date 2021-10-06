@@ -147,6 +147,7 @@ const differentSatellites = (data) => {
   let timeOfDay = satArr[1].time24[0]+satArr[1].time24[1]
   setBackground(timeOfDay)
   buildSatellites(satArr)
+  moveSatelliteMain(satArr)
   buildCompass(satArr)
   buildInfoBox(satArr)
 
@@ -402,9 +403,6 @@ const getSatOrder = (arr) => {
 
 const removeOld = () => {
   const satellites = document.querySelectorAll('.satellite')
-  // if (satellites.length > 0) {
-  //   satellites.remove()
-  // }
   satellites.forEach(satellite => {
     satellite.remove()
   })
@@ -448,6 +446,184 @@ const clearSearch = () => {
   old.value = ''
 }
 
-const moveSatellite = (data) => {
+const moveSatelliteMain = (arr) => {
+  let order = getSatOrder(arr)
+  if (order == 123) {
+    moveRight(arr)
+  } else if (order == 321) {
+    moveLeft(arr)
+  }
+}
 
+const moveRight = (arr) => {
+  const old = document.querySelector('.moving-sat')
+  if (old !== null) {
+    old.remove()
+  }
+  console.log('move right')
+  const area = document.querySelector('#motion-area')
+  const sat = document.createElement('img')
+  sat.src = 'images/satellite.png'
+  sat.style.height = '50px'
+  sat.style.width = '60px'
+  sat.className = 'moving-sat'
+  area.appendChild(sat)
+  
+  let x = 0
+  let y = 0
+  let z = window.innerWidth-65
+  
+  setInterval(() => {
+    if (x == (z)) {
+      x = 0
+      y = 0
+    } else if (x >= (z * (1 / 8))) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (2 / 8))) {
+
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (3 / 8))) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (4 / 8))) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (5 / 8))) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (6 / 8))) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z * (7 / 8))) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x >= (z / 2)) {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else {
+      
+      x++
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    }
+  })
+}
+
+const moveLeft = (arr) => {
+  const old = document.querySelector('.moving-sat')
+  if (old !== null) {
+    old.remove()
+  }
+  console.log('move left')
+  const area = document.querySelector('#motion-area')
+  const sat = document.createElement('img')
+  sat.src = 'images/satellite.png'
+  sat.style.height = '50px'
+  sat.style.width = '60px'
+  sat.className = 'moving-sat'
+  area.appendChild(sat)
+  let z = window.innerWidth-65
+  let x = z
+  let y = 0
+  
+  setInterval(() => {
+    if (x == 0) {
+      x = z
+      y = 0
+    } else if (x <= (z * (1/8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (2 / 8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (3 / 8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    }else if (x <= (z * (4/8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (5 / 8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (6 / 8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else if (x <= (z * (7 / 8))) {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    } else {
+      
+      x--
+      sat.style.marginBottom = y + "px";
+      sat.style.marginLeft = x + "px";
+    }
+  }, 5)
+  
+}
+
+
+const positionOneInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+}
+
+const positionTwoInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+}
+
+const positionThreeInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+}
+
+const positionFourInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+}
+
+const positionFiveInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+}
+
+const positionSixInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
+}
+
+const positionSevenInterval = (arr) => {
+  const windowWidth = window.innerWidth - 65
+  const windowHeight = 450
 }

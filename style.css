@@ -19,7 +19,7 @@ body {
   margin-top: 5%;
 }
 
-#action-area, #overlay {
+#action-area, #overlay, #motion-area {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -27,22 +27,23 @@ body {
   left: 0;
 }
 
-/* #skyline {
-  width: 100%;
-  height: 20%;
-  position: absolute;
+#motion-area {
+  z-index: 6;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* #moving-satellite {
+  height: 50px;
+  width: 50px;
   bottom: 0;
-  left: 0;
-  background: url(images/city.png);
-  background-size: contain;
-  background-repeat: repeat-x;
-  z-index: 20;
+  margin-bottom: 50px;
+  
 } */
 
+
 #overlay {
-  /* background: blue; */
   height: 500px;
-  /* margin-top: 50px; */
   display: flex;
   justify-content: space-between;
   z-index: 10;
@@ -53,7 +54,6 @@ body {
   height: 500px;
   width: 10%;
   background: linear-gradient(to right, rgba(112,13,112,1), rgba(20,20,20,0));
-  /* display: inline-block; */
 }
 
 #right-side {
@@ -114,9 +114,6 @@ form {
   width: 50px;
   margin-left: 3%;
   margin-right: 3%;
-  /* display: flex;
-  justify-content: center;
-  align-content: center; */
 }
 
 .logo-img {
@@ -185,6 +182,8 @@ footer {
   justify-content: center;
   z-index: 11;
 }
+
+
 
 main {
   padding-bottom: 100px;
