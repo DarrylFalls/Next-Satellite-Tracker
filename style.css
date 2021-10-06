@@ -5,11 +5,21 @@ header {
   color: white;
   text-align: center;
   font-family: 'Comfortaa', cursive;
+  font-size: 120%;
+  position: absolute;
+  background: rgba(3, 2, 44, 0.8);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* margin-bottom: 5%; */
 }
 
 body {
   background: rgb(112, 13, 112);
   font-family: 'Comfortaa', cursive;
+
 }
 
 #main-display {
@@ -85,6 +95,7 @@ body {
 form {
   text-align: center;
   margin: 3%;
+  margin-top: 5%;
 }
 
 #action-area {
@@ -183,8 +194,31 @@ footer {
   z-index: 11;
 }
 
-
+button {
+  border-radius: 5px;
+  background: rgba(3, 2, 44, 0.8);
+  color: white;
+}
 
 main {
   padding-bottom: 100px;
+  margin-top: 250px;
+}
+
+#location {
+  background: rgba(55, 54, 75, 0.8);
+}
+
+@media only screen and (max-width: 600px) {
+  header {
+    font-size: 90%;
+  }
+  #intro {
+    font-size: 80%;
+    margin: 5%;
+  }
+  .logo-img {
+    height: 40px;
+    width: 40px;
+  }
 }
