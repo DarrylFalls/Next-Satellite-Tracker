@@ -565,7 +565,7 @@ const moveRight = (arr) => {
       sat.style.marginBottom = y + "px";
       sat.style.marginLeft = x + "px";
     }
-  }, 5)
+  }, timer())
 }
 
 const moveLeft = (arr) => {
@@ -678,10 +678,17 @@ const moveLeft = (arr) => {
       sat.style.marginBottom = y + "px";
       sat.style.marginLeft = x + "px";
     }
-  }, 5)
+  }, timer())
   
 }
 
+const timer = () => {
+  if (window.innerWidth > 600) {
+    return 4
+  } else {
+    return 8
+  }
+}
 
 // const positionOneInterval = (arr) => {
 //   const windowWidth = window.innerWidth - 65

@@ -207,6 +207,7 @@ main {
 
 #location {
   background: rgba(55, 54, 75, 0.8);
+  color: white;
 }
 
 @media only screen and (max-width: 600px) {
@@ -220,5 +221,8 @@ main {
   .logo-img {
     height: 40px;
     width: 40px;
+  }
+  main {
+    margin-top: 200px;
   }
 }
