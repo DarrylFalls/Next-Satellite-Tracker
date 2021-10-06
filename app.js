@@ -1,19 +1,19 @@
 
 
-const searchBar = document.querySelector('#location')
-searchBar.addEventListener('keyup', () => {
-  const input = searchBar.value
-  const locationKey = 'pk.9ef5062ddda432e353491dd453e38da9'
-  const locationAPI = `https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${input}&format=json`
-  fetch(`${locationAPI}`)
-    .then((res) => { return res.json() })
-    .then((resJSON) => {
-      searchSuggestion(resJSON)
-    })
-    .catch((error) => {
-      console.log(`ERROR: ${error}`)
-    })
-})
+// const searchBar = document.querySelector('#location')
+// searchBar.addEventListener('keyup', () => {
+//   const input = searchBar.value
+//   const locationKey = 'pk.9ef5062ddda432e353491dd453e38da9'
+//   const locationAPI = `https://us1.locationiq.com/v1/search.php?key=${locationKey}&q=${input}&format=json`
+//   fetch(`${locationAPI}`)
+//     .then((res) => { return res.json() })
+//     .then((resJSON) => {
+//       searchSuggestion(resJSON)
+//     })
+//     .catch((error) => {
+//       console.log(`ERROR: ${error}`)
+//     })
+// })
 
 
 const searchButton = document.querySelector('button')
@@ -816,7 +816,7 @@ const interval2 = (arr) => {
   const c2 = y + (2 * L)
   const b2 = ((2 / 4) * x)
   const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
-  const interval = Math.round((a1/((1/2)*x))*5)
+  const interval = Math.round(((a1)/((1/2)*x))*5)
   return interval
 }
 
@@ -863,7 +863,7 @@ const positionThreeInterval = (arr) => {
   const c2 = y + (2 * L)
   const b2 = ((1 / 2) * x)
   const a2 = Math.sqrt((c2 * c2) - (b2 * b2))
-  const interval = Math.round(((a1 - a2)/((1 / 4) * x))*10)
+  const interval = Math.round(((a1-a2)/((1 / 4) * x))*5)
   return interval
 }
 

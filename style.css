@@ -19,7 +19,7 @@ header {
 body {
   background: rgb(112, 13, 112);
   font-family: 'Comfortaa', cursive;
-
+  margin: 0;
 }
 
 #main-display {
@@ -80,6 +80,7 @@ body {
   height: 50px;
   width: 100%;
   background: linear-gradient(to bottom, rgba(112,13,112,1), rgba(20,20,20,0));
+  /* padding-top: 15px; */
 }
 #top-left {
   height: 50px;
@@ -181,7 +182,7 @@ form {
 
 footer {
   background: rgba(3, 2, 44, 0.8);
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
@@ -191,6 +192,7 @@ footer {
   /* align-content: center; */
   justify-content: center;
   z-index: 11;
+  margin: 0;
 }
 
 button {
@@ -202,6 +204,7 @@ button {
 main {
   padding-bottom: 100px;
   margin-top: 250px;
+  margin-bottom: 100 px;
 }
 
 #location {
