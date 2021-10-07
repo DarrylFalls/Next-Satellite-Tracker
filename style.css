@@ -28,17 +28,19 @@ header {
 
 #title {
   z-index: 5;
-  padding: 30px;
+  padding-top: 30px;
 }
 
 #video-div {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   overflow: hidden;
   height: 20vh;
   width: 105%;
 }
+
+
 
 video {
   z-index: -1;
@@ -64,12 +66,27 @@ body {
   margin-top: 5%;
 }
 
-#action-area, #overlay, #motion-area {
+#action-area, #overlay, #motion-area, #satellite-video-div {
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+#satellite-video-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  /* padding-top: 12%; */
+}
+
+#satellite-video {
+  padding-top: 5%;
+  /* height: 90%; */
 }
 
 #motion-area {
@@ -153,6 +170,9 @@ form {
   padding-top: 50px;
   font-size: 80%;
   margin: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+  /* background: rgba(100, 100, 100, 0.5); */
 }
 
 
@@ -253,6 +273,12 @@ main {
   header {
     font-size: 120%;
   }
+  /* #video-div{
+    height: 30vh;
+  } */
+  /* #title {
+    padding-top: 10vh;
+  }  */
   #intro {
     font-size: 150%;
     margin: 0;
@@ -263,5 +289,14 @@ main {
   }
   main {
     margin-top: 250px;
+  }
+  /* form {
+    margin-top: 25%;
+  } */
+}
+
+@media only screen and (max-width: 800px) {
+  #video-div {
+    justify-content: center;
   }
 }
