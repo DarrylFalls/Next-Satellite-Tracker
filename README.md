@@ -80,3 +80,12 @@
   //skyline will change based on the size of the city
 
   //use videos as starting backgrounds
+
+
+##Goals:
+
+//
+
+//
+
+//

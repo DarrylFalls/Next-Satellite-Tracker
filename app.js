@@ -61,6 +61,7 @@ const searchSuggestion = (data) => {
   }
   for (let i = 0; i < data.length; i++) {
     console.log(data[i].display_name)
+
   }
 }
 
@@ -90,6 +91,8 @@ const getTime12 = (data) => {
     hourNum = h
     pre = 'AM'
   }
+  
+
   let time = `${hourNum}:${minute}:${second} ${pre}`
 
   return time
@@ -147,7 +150,7 @@ const differentSatellites = (data) => {
       visible: data.rise.visible,
     },
     {
-      position: 'Culmination',
+      position: 'Apex',
       alt: `${culmAlt}`,
       altPerc: culmPerc,
       az: data.culmination.az,
@@ -223,7 +226,7 @@ const buildInfoBox = (arr) => {
     label.for = `${arr[i].position}`
     if (window.innerWidth > 600) {
       label.innerText = `${arr[i].position}`
-    } else if (arr[i].position == 'Culmination') {
+    } else if (arr[i].position == 'Apex') {
       label.innerText = 'Apex'
     } else {
       label.innerText = `${arr[i].position}`
@@ -292,7 +295,7 @@ const buildSatellites = (arr) => {
   let satOrder = getSatOrder(arr)
   arr.forEach(sat => {
     const container = document.createElement('div')
-    if (sat.position == 'Culmination') {
+    if (sat.position == 'Apex') {
       document.querySelector('#action-center').appendChild(container)
     } else if (sat.position == 'Rise' && satOrder == 123) {
       document.querySelector('#action-left').appendChild(container)
@@ -358,7 +361,7 @@ const buildSatellites = (arr) => {
 
       const place = document.createElement('p')
       smallInfoBox.appendChild(place)
-      if (sat.position == 'Culmination') {
+      if (sat.position == 'Apex') {
         place.innerText = 'Apex'
       } else {
         place.innerText = `${sat.position}`
