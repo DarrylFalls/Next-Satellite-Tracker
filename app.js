@@ -442,7 +442,7 @@ const setSkyline = (data) => {
   const skyline = document.querySelector('#skyline')
   const importance = data.importance
   console.log(importance)
-  if (importance > 0.8) {
+  if (importance > 0.75) {
     skyline.style.background = `url(images/city.png)`
     skyline.style.width = '100%'
     skyline.style.height = '20%'
