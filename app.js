@@ -61,7 +61,6 @@ const searchSuggestion = (data) => {
   }
   for (let i = 0; i < data.length; i++) {
     console.log(data[i].display_name)
-
   }
 }
 
@@ -91,8 +90,6 @@ const getTime12 = (data) => {
     hourNum = h
     pre = 'AM'
   }
-  
-
   let time = `${hourNum}:${minute}:${second} ${pre}`
 
   return time
@@ -224,7 +221,6 @@ const buildInfoBox = (arr) => {
     newDiv.setAttribute('id', `${arr[i].position}`)
     const label = document.createElement('h2')
     label.for = `${arr[i].position}`
-    // label.innerText = `${arr[i].position}`
     if (window.innerWidth > 600) {
       label.innerText = `${arr[i].position}`
     } else if (arr[i].position == 'Culmination') {
@@ -289,7 +285,6 @@ const buildCompass = (arr) => {
   setTimeout(() => {
     compass.style.transform = `rotate(${360 - (arr[1].az)}deg)`
   }, 1499)
-  // compass.style.transform = `rotate(${360 - (arr[1].az)}deg)`
   console.log(arr[1].az)
 }
 
@@ -326,8 +321,6 @@ const buildSatellites = (arr) => {
     // if (sat.visible == false) {
     //   img.style.opacity = '0.3'
     // }
-
-    
 
     if (window.innerWidth > 600) {
       const smallInfoBox = document.createElement('div')
