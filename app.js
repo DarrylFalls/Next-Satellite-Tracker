@@ -271,11 +271,7 @@ const buildInfoBox = (arr) => {
     direction.innerText = `Compass Direction: ${arr[i].direction}`
     visible.innerText = `Satellite is Visible: ${arr[i].visible}`
   }
-
-
 }
-
-
 
 
 const buildCompass = (arr) => {
